@@ -1,0 +1,20 @@
+{
+  "name": "Flask API Development - Microservice",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": "..",
+    "target": "dev"
+  },
+  "workspaceFolder": "/app",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
+  "forwardPorts": [8000],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "dracula-theme.theme-dracula",
+        "matangover.mypy"
+      ]
+    }
+  }
+}
