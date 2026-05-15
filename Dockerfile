@@ -2,6 +2,7 @@
 FROM python:3.11-slim AS dev
 
 RUN apt-get update \
+    && apt-get install -y --no-install-recommends git \ 
     && apt-get install -y --no-install-recommends curl \
     && rm -rf /var/lib/apt/lists/*
 

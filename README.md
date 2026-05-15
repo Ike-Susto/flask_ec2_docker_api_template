@@ -1,5 +1,12 @@
 # Flask EC2 Docker API template
 
+Template for developing and running a flask application using containers.
+
+Features:
+1. Two-stage Dockerfile (dev and prod)
+1. Devcontainer development
+1. AWS EC2 support - TBD
+
 ## Repository layout
 
 ```text
@@ -9,7 +16,6 @@
 ├── app/
 │   ├── __init__.py
 │   └── main.py                 # Flask app object: app
-├── .dockerignore
 ├── Dockerfile                  # One Dockerfile with two targets: dev + prod
 ├── requirements.txt            # Runtime deps (prod)
 ├── requirements-dev.txt        # Dev deps (dev)
@@ -17,6 +23,9 @@
 ```
 
 ## Prereqs on your laptop
+- VS Code
+- Docker 
+- Git
 
 ### VS Code setup
 
@@ -30,7 +39,7 @@ Restart VS Code
 
 [Install docker engine](https://docs.docker.com/engine/install/)
 
-In order to allow VS Code to open a Dev Container docker without sudo privileges the current user must be added into docker GROUP.
+In order to allow VS Code to open a Dev Container without sudo privileges the current user must be added into the docker GROUP.
 
 Add current user to docker GROUP.
 ```bash
@@ -46,16 +55,42 @@ docker ps -a
 ```
 ### Git Setup
 
-### Dev Container startup
-
-Clone the repository into your local machine.
+Configure your Git identity (once per machine):
 ```bash
-cd ./my_workspace_folder
-git clone 
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
 ```
 
-Build application using Flask`s own server.
+Clone the repository:
 ```bash
-flask --app app.main --debug run --host 0.0.0.0 --port 8000
+git clone https://github.com/Ike-Susto/flask_ec2_docker_api_template.git
+cd flask_ec2_docker_api_template
 ```
 
+If you created a new repo from this template, point `origin` to your new repository URL:
+
+```bash
+git remote -v
+git remote set-url origin <YOUR_NEW_REPO_URL>
+git remote -v
+```
+
+Commit any local changes and push:
+
+```bash
+git status
+git add -A
+git commit -m "Your message"    # if there are changes to commit
+git push -u origin main
+```
+
+## Dev Use
+
+Start a new shell session with docker as a primary group.
+```bash
+newgrp docker
+```
+Open the project on VS Code.
+
+If not prompted to `Reopen in Dev Container`, run
+`ctrl + shift + p` then `Reopen in Dev Container` 
